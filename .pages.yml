@@ -1,0 +1,38 @@
+media:
+  input: assets
+  output: assets
+
+content:
+  - name: events
+    label: Events
+    type: file
+    path: events.json
+    format: json
+    fields:
+      - name: events
+        label: Events
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Title
+            type: string
+            required: true
+          - name: date
+            label: Date
+            type: date
+            required: true
+          - name: tag
+            label: Type
+            type: select
+            options:
+              values: [Workshop, Big Event, Hackathon, Speaker, Social]
+          - name: summary
+            label: Short summary (shown on the card)
+            type: text
+          - name: description
+            label: Full description (shown in the pop-up)
+            type: text
+          - name: image
+            label: Photo (optional; past events only)
+            type: image
