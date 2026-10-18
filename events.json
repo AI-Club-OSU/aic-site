@@ -1,0 +1,12 @@
+{
+  "events": [
+    {
+      "title": "Fruit Ninja Computer Vision Day",
+      "date": "2026-10-07",
+      "tag": "Workshop",
+      "summary": "Our second project workshop of the term: a quick intro to computer vision, then a live Fruit Ninja game powered by existing CV models — complete with a leaderboard.",
+      "description": "Our second project workshop of the term: a quick intro to computer vision, then a live Fruit Ninja game powered by existing CV models — complete with a leaderboard. These are the same models powering our term-long projects.",
+      "image": "assets/fruit_ninja.png"
+    }
+  ]
+}

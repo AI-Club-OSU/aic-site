@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events — AI Club @ OSU</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#17140f', charcoal: '#4b443e', charcoal2: '#3a342f',
+          paper: '#f3ece1', paper2: '#e9e0d0', brick: '#e91e25', brickdk: '#7c2166', sand: '#cabfa9',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+        maxWidth: { site: '1120px' },
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="custom.css">
+</head>
+<body class="antialiased bg-paper text-ink font-body leading-relaxed">
+
+<nav class="sticky top-0 z-50 bg-charcoal border-b border-paper/10">
+  <div class="max-w-site mx-auto flex items-center justify-between gap-5 px-7 py-3.5">
+    <a href="index.html" class="flex items-center gap-3 text-paper no-underline">
+      <img src="assets/ai_logo.png" alt="AI Club logo" class="w-10 h-10 flex-none object-contain">
+      <span class="font-display font-bold tracking-wide text-[1.05rem]">AI CLUB</span>
+    </a>
+    <button data-nav-toggle class="md:hidden inline-flex border border-sand text-paper rounded font-mono text-sm px-3 py-2" aria-expanded="false" aria-label="Toggle navigation">MENU</button>
+    <ul data-nav-menu class="hidden md:flex items-center gap-7 list-none m-0 p-0 font-mono text-[.82rem] tracking-wide uppercase
+                absolute md:static top-[64px] left-0 right-0 md:top-auto flex-col md:flex-row
+                bg-charcoal md:bg-transparent px-7 md:px-0 py-4 md:py-0 border-b md:border-0 border-paper/10 gap-4 md:gap-7">
+      <li><a href="index.html" class="text-sand hover:text-paper py-1 no-underline transition-colors">Home</a></li>
+      <li><a href="about.html" class="text-sand hover:text-paper py-1 no-underline transition-colors">About</a></li>
+      <li><a href="events.html" class="relative text-paper py-1 no-underline after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:w-full after:bg-brick">Events</a></li>
+    </ul>
+    <a href="about.html#join" class="hidden md:inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded bg-gradient-to-r from-[#e91e25] to-[#7c2166] text-paper no-underline hover:from-[#7c2166] hover:to-[#e91e25] hover:-translate-y-0.5 transition">Join Us</a>
+  </div>
+</nav>
+
+<header class="bg-charcoal text-paper py-14 md:py-16">
+  <div class="max-w-site mx-auto px-7">
+    <div class="flex items-center gap-2.5 font-mono text-[.78rem] tracking-[.14em] uppercase text-brick mb-4">
+      <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#e91e25] to-[#7c2166] animate-pulse"></span> EVENTS
+    </div>
+    <h1 class="font-display font-bold text-[2rem] md:text-[2.9rem] leading-[1.05] mb-4">What we've done, and what's next.</h1>
+    <p class="text-sand max-w-[56ch]">One workshop every week, one big event every month — plus the occasional hackathon.</p>
+  </div>
+</header>
+
+<section id="recent" class="py-16 md:py-20">
+  <div class="max-w-site mx-auto px-7">
+    <div class="max-w-[60ch] mb-9">
+      <div class="font-mono text-[.78rem] tracking-[.14em] uppercase text-brick mb-3">RECENT STORIES</div>
+      <h2 class="font-display font-bold text-[1.7rem] md:text-[2rem]">What we have been up to</h2>
+    </div>
+    <!-- filled from events.json by script.js (all past events) -->
+    <div id="recent-grid" class="grid gap-5 md:grid-cols-2 lg:grid-cols-3"></div>
+  </div>
+</section>
+
+<!-- EVENT DETAIL MODAL -->
+<div id="event-modal-backdrop" class="hidden fixed inset-0 bg-ink/70 z-[100] items-center justify-center p-5" aria-hidden="true">
+  <div id="event-modal" role="dialog" aria-modal="true" aria-labelledby="event-modal-title"
+       class="bg-charcoal text-paper rounded-lg border-2 border-brick max-w-lg w-full max-h-[88vh] overflow-y-auto relative shadow-2xl">
+    <button id="event-modal-close" aria-label="Close" class="absolute top-4 right-4 text-sand hover:text-paper font-mono text-2xl leading-none z-10">&times;</button>
+    <div class="p-6 md:p-8">
+      <div id="event-modal-image" class="bg-paper rounded-lg aspect-[16/10] overflow-hidden mb-6"></div>
+      <span id="event-modal-tag" class="inline-block bg-sand text-ink font-mono text-[.68rem] uppercase tracking-wide px-2.5 py-1 rounded-full mb-3"></span>
+      <div id="event-modal-date" class="font-mono text-[.75rem] text-brick mb-2"></div>
+      <h3 id="event-modal-title" class="font-display font-bold text-xl mb-3"></h3>
+      <p id="event-modal-desc" class="text-sand"></p>
+    </div>
+  </div>
+</div>
+
+<hr class="border-paper2">
+
+<section id="upcoming" class="py-16 md:py-20">
+  <div class="max-w-site mx-auto px-7">
+    <div class="max-w-[60ch] mb-9">
+      <div class="font-mono text-[.78rem] tracking-[.14em] uppercase text-brick mb-3">UPCOMING EVENTS</div>
+      <h2 class="font-display font-bold text-[1.7rem] md:text-[2rem]">What's next</h2>
+    </div>
+    <!-- filled from events.json by script.js (events dated today or later) -->
+    <div id="upcoming-list" class="flex flex-col gap-4"></div>
+  </div>
+</section>
+
+<section id="join" class="bg-charcoal text-paper text-center py-16 md:py-20">
+  <div class="max-w-site mx-auto px-7">
+    <h2 class="font-display font-bold text-[1.9rem] md:text-[2.4rem] mb-3">Ready to join?</h2>
+    <p class="text-sand max-w-[46ch] mx-auto mb-7">Come to a workshop before you commit — that's the best way to see if it's for you.</p>
+    <a href="about.html#join" class="inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded bg-gradient-to-r from-[#e91e25] to-[#7c2166] text-paper no-underline hover:from-[#7c2166] hover:to-[#e91e25] hover:-translate-y-0.5 transition">Apply Now</a>
+  </div>
+</section>
+
+<footer class="bg-charcoal text-sand pt-11 pb-7">
+  <div class="max-w-site mx-auto px-7">
+    <div class="flex flex-wrap gap-5 items-center justify-between border-t border-paper/10 pt-6">
+      <div class="flex items-center gap-3">
+        <img src="assets/ai_logo.png" alt="AI Club logo" class="w-8 h-8 object-contain">
+        <span class="font-display font-bold tracking-wide text-paper text-[1.05rem]">AI CLUB</span>
+      </div>
+      <ul class="flex gap-6 list-none m-0 p-0 font-mono text-[.8rem] uppercase tracking-wide">
+        <li><a href="https://www.instagram.com/osu_aiclub/" class="no-underline hover:text-paper transition-colors">Instagram</a></li>
+        <li><a href="https://discord.gg/sAyYh976N" target="_blank" rel="noopener" class="no-underline hover:text-paper transition-colors">Discord</a></li>      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
