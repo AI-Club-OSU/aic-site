@@ -1,12 +1,12 @@
 media:
-  input: assets
-  output: assets
+  input: public/assets
+  output: /assets
 
 content:
   - name: events
     label: Events
     type: file
-    path: events.json
+    path: src/content/events.json
     format: json
     fields:
       - name: events
