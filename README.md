@@ -21,7 +21,7 @@ Development runs at **https://aic-site.localhost**. The static production previe
 
 With the global Vite Plus CLI, use `vp install`, `vp run dev`, `vp run check`, `vp test run`, `vp build`, and `vp run preview`. Use `vp run dev` and `vp run preview` to run the package scripts through Portless; bare `vp dev` and `vp preview` invoke the built-in tools directly. To bypass Portless temporarily, use `PORTLESS=0 npm run dev`.
 
-Type checking runs through the experimental Rust-based `tsrs` compiler as part of `npm run check`. Vite Plus handles formatting and linting, including its existing type-aware lint rules. The official TypeScript package remains available for tooling compatibility and compiler comparisons. Tailwind CSS 4 uses its Vite plugin and CSS theme tokens in `src/styles.css`.
+Type checking runs through the experimental Rust-based `tsrs` compiler as part of `npm run check`. Vite Plus handles formatting and linting, including its existing type-aware lint rules. Tailwind CSS 4 uses its Vite plugin and CSS theme tokens in `src/styles.css`.
 
 ## Rendering and routing
 
