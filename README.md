@@ -1,57 +1,38 @@
 # AI Club @ OSU
 
-Official website for the Artificial Intelligence Club at Oregon State University.
-
-React, TanStack Router, TanStack Start static prerendering, Vite Plus, and Tailwind CSS. Hosted on Cloudflare.
+Website for Oregon State University's Artificial Intelligence Club. Built with React, TanStack Router and Start, Vite Plus, and Tailwind CSS. Hosted on Cloudflare.
 
 ## Development
 
-Use Node.js 26.12.1 (see `.node-version`) and npm 12.2.1 (pinned in `package.json`).
+Use Node.js 26.12.1 and [Vite Plus](https://viteplus.dev/guide/). Vite Plus downloads and uses the pnpm version pinned in `package.json`.
 
 ```sh
-npm ci
-npm run dev
-npm run check
-npm test
-npm run build
-npm run preview
+vp install
+vp run dev
+vp run check
+vp test run
+vp build
+vp run preview
 ```
 
-Development runs at **https://aic-site.localhost**. The static production preview runs at **https://preview.aic-site.localhost**. Both use [Portless](https://portless.sh/commands) with its default shared proxy and state. Portless is pinned to the same version as our other local projects. The normal package scripts register each app; no separate proxy, certificates, ports, or state directory are configured in this project.
+The dev site runs at https://aic-site.localhost. The production preview runs at https://preview.aic-site.localhost. Both use the shared Portless proxy. Run `PORTLESS=0 vp run dev` to bypass it.
 
-With the global Vite Plus CLI, use `vp install`, `vp run dev`, `vp run check`, `vp test run`, `vp build`, and `vp run preview`. Use `vp run dev` and `vp run preview` to run the package scripts through Portless; bare `vp dev` and `vp preview` invoke the built-in tools directly. To bypass Portless temporarily, use `PORTLESS=0 npm run dev`.
+`vp run check` checks formatting, runs the linter, and type-checks with `tsrs`. Use the package scripts for dev and preview so Portless runs too.
 
-Type checking runs through the experimental Rust-based `tsrs` compiler as part of `npm run check`. Vite Plus handles formatting and linting, including its existing type-aware lint rules. Tailwind CSS 4 uses its Vite plugin and CSS theme tokens in `src/styles.css`.
+## Editing the site
 
-## Rendering and routing
+Pages live in `src/routes`. The routes are `/`, `/about/`, and `/events/`. TanStack generates `src/routeTree.gen.ts`; commit that file, but don't edit it by hand.
 
-Pages live in `src/routes`: `/`, `/about/`, and `/events/`. TanStack Start generates the route tree and prerenders every static route during `vp build`. Commit `src/routeTree.gen.ts`, but do not edit it manually.
+Edit events in `src/content/events.json` or through [Pages CMS](https://app.pagescms.org/) by selecting `AI-Club-OSU/aic-site`. Its form is configured in `.pages.yml`. Images go in `public/assets` and use `/assets/` URLs. Edit Home and About copy in their route components.
 
-The deployable output is **`dist/client`**, containing HTML for each page, CSS, JavaScript, and images. Page titles, descriptions, headings, and event cards are present in the generated HTML before JavaScript runs. React hydrates those pages for client navigation, mobile menus, and event dialogs. Event data is imported into the build; there is no browser request to GitHub, Pages CMS, or a separate events JSON endpoint.
+CMS saves create GitHub commits. Changes appear on the site after Cloudflare deploys them. Past events sort newest first, upcoming events sort soonest first, and the home page shows the two latest past events.
 
-The HTML classifies events using the build date in `America/Los_Angeles`. After hydration, the app uses the visitor's local date and refreshes that classification at local midnight and when the window regains focus. The initial hydration uses the same date as the HTML to avoid mismatches. Without JavaScript, the page remains the build-time snapshot. Rebuild when content changes or when the static snapshot needs refreshing.
+## Build and deployment
 
-TanStack Start also produces `dist/server` for its rendering pipeline. Deploy **only `dist/client`**; this site requires no production rendering server or Worker. The preview script uses a separate minimal Vite configuration to serve only static files, without the Start server.
+`vp build` generates HTML for each page in `dist/client`, including titles and event content. React adds client navigation, menus, and dialogs after the page loads. Events are bundled into the build.
 
-The former `/about.html` and `/events.html` URLs have no compatibility routes or redirects. On Cloudflare Pages, `/index.html` has the platform's normal redirect to `/`; this project adds no legacy redirects.
+Generated HTML uses the build date in Oregon time. After hydration, events use the visitor's local date and update at midnight or when the window regains focus. Without JavaScript, the page keeps the build-time snapshot.
 
-## Content editing
+Deploy `dist/client` as static files. The `dist/server` directory is only used during prerendering. Cloudflare serves the generated pages and uses `404.html` for unknown paths.
 
-[Pages CMS](https://app.pagescms.org/) uses `.pages.yml` to provide an Events form. Sign in with GitHub and select `AI-Club-OSU/aic-site` and the intended branch. Events are stored in `src/content/events.json`; uploaded images are stored in `public/assets`, with public URLs starting with `/assets/`. Those files can also be edited directly on GitHub. Home and About copy is edited in the route components.
-
-CMS saves commit changes to GitHub. If Cloudflare Git integration watches that branch, each save triggers a deployment. Content updates become visible once deployment completes. The home page shows the two latest past events. Past events sort newest first; today's and future events sort soonest first.
-
-## Cloudflare deployment
-
-For Cloudflare Pages, use:
-
-- Install: `npm ci` (or the platform's automatic npm lockfile install)
-- Build command: `npm run build`
-- Build output directory: `dist/client`
-- Node.js: `26.12.1`
-
-Cloudflare serves `/about` and `/events` from their generated nested `index.html` files. The top-level `404.html` disables SPA fallback and gives unknown paths a real 404 response. See [Cloudflare's serving behavior](https://developers.cloudflare.com/pages/configuration/serving-pages/).
-
-For Workers Static Assets, point the asset directory at `./dist/client`, use `assets.html_handling: "force-trailing-slash"` and `assets.not_found_handling: "404-page"`, and omit a Worker entry point. No request-time rendering or SPA fallback is needed.
-
-Update the existing Cloudflare project's build settings when deploying this migration. Repository changes do not change live hosting settings automatically.
+For the Cloudflare build, use Node.js 26.12.1, `pnpm install --frozen-lockfile`, and `pnpm exec vp build`. Set the output directory to `dist/client`. These commands use the project's local Vite Plus installation.
