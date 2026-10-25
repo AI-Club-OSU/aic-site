@@ -22,7 +22,7 @@ export function Navigation() {
         </Link>
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden inline-flex border border-sand text-paper rounded font-mono text-sm px-3 py-2"
+          className="md:hidden inline-flex border border-sand text-paper rounded-sm font-mono text-sm px-3 py-2"
           aria-expanded={open}
           aria-controls="nav-menu"
           aria-label="Toggle navigation"
@@ -60,7 +60,7 @@ export function Navigation() {
         <Link
           to="/about/"
           hash="join"
-          className="hidden md:inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded bg-gradient-to-r from-[#e91e25] to-[#7c2166] text-paper no-underline hover:from-[#7c2166] hover:to-[#e91e25] hover:-translate-y-0.5 transition"
+          className="hidden md:inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded-sm bg-linear-to-r from-brick to-brickdk text-paper no-underline hover:from-brickdk hover:to-brick hover:-translate-y-0.5 transition"
         >
           Join Us
         </Link>

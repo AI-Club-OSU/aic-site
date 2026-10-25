@@ -43,7 +43,7 @@ function EventModal({ event, onClose }: { event: ClubEvent; onClose: () => void 
           &times;
         </button>
         <div className="p-6 md:p-8">
-          <div className="bg-paper rounded-lg aspect-[16/10] overflow-hidden mb-6">
+          <div className="bg-paper rounded-lg aspect-16/10 overflow-hidden mb-6">
             <EventImage event={event} />
           </div>
           <span className="inline-block bg-sand text-ink font-mono text-[.68rem] uppercase tracking-wide px-2.5 py-1 rounded-full mb-3">
@@ -86,7 +86,7 @@ export function RecentEvents({
               aria-haspopup="dialog"
               className="bg-charcoal text-paper text-left rounded-lg overflow-hidden flex flex-col border-2 border-brick cursor-pointer transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:ring-2 focus-visible:ring-brick focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
             >
-              <div className="bg-paper aspect-[16/10] relative overflow-hidden w-full">
+              <div className="bg-paper aspect-16/10 relative overflow-hidden w-full">
                 <EventImage event={event} />
                 <span className="absolute top-3 left-3 z-10 bg-sand text-ink font-mono text-[.68rem] uppercase tracking-wide px-2.5 py-1 rounded-full">
                   {event.tag || "Event"}
@@ -127,7 +127,7 @@ export function UpcomingEvents({ data: { events, asOf } }: { data: EventsData })
             key={`${event.date}-${event.title}`}
             className="flex items-center gap-5 flex-wrap bg-paper2 rounded-lg px-5 py-4"
           >
-            <div className="bg-gradient-to-r from-[#e91e25] to-[#7c2166] text-paper font-mono font-bold rounded-md px-4 py-3 text-center min-w-[78px] leading-tight">
+            <div className="bg-linear-to-r from-brick to-brickdk text-paper font-mono font-bold rounded-md px-4 py-3 text-center min-w-[78px] leading-tight">
               <span className="block text-xl">{parseDate(event.date).getDate()}</span>
               <span className="text-[.7rem] uppercase tracking-wide">
                 {parseDate(event.date).toLocaleDateString("en-US", { month: "short" })}

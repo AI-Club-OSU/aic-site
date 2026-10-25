@@ -9,7 +9,7 @@ function AboutPage() {
       <header className="bg-charcoal text-paper py-14 md:py-16">
         <div className="max-w-site mx-auto px-7">
           <div className="flex items-center gap-2.5 font-mono text-[.78rem] tracking-[.14em] uppercase text-brick mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#e91e25] to-[#7c2166] animate-pulse"></span>{" "}
+            <span className="w-1.5 h-1.5 rounded-full bg-linear-to-r from-brick to-brickdk animate-pulse"></span>{" "}
             ABOUT AI CLUB
           </div>
           <h1 className="font-display font-bold text-[2rem] md:text-[2.9rem] leading-[1.05] mb-4">
@@ -48,7 +48,7 @@ function AboutPage() {
               growing AI ecosystem through student-led innovation and industry collaboration.
             </p>
           </div>
-          <div className="rounded-lg overflow-hidden aspect-[4/3] bg-paper2">
+          <div className="rounded-lg overflow-hidden aspect-4/3 bg-paper2">
             <img
               src="/assets/about_pic.png"
               alt="AI Club members at a workshop"
@@ -205,7 +205,7 @@ function AboutPage() {
           </p>
           <a
             href="mailto:hello@aiclub.osu.edu?subject=Joining%20AI%20Club"
-            className="inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded bg-gradient-to-r from-[#e91e25] to-[#7c2166] text-paper no-underline hover:from-[#7c2166] hover:to-[#e91e25] hover:-translate-y-0.5 transition"
+            className="inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded-sm bg-linear-to-r from-brick to-brickdk text-paper no-underline hover:from-brickdk hover:to-brick hover:-translate-y-0.5 transition"
           >
             Apply Now
           </a>

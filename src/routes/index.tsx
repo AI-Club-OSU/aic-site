@@ -14,7 +14,7 @@ function HomePage() {
         <div className="max-w-site mx-auto px-7 grid gap-10 md:grid-cols-[1.1fr_.9fr] items-center">
           <div>
             <div className="flex items-center gap-2.5 font-mono text-[.78rem] tracking-[.14em] uppercase text-brick mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#e91e25] to-[#7c2166] animate-pulse"></span>{" "}
+              <span className="w-1.5 h-1.5 rounded-full bg-linear-to-r from-brick to-brickdk animate-pulse"></span>{" "}
               STUDENT-RUN · OREGON STATE UNIVERSITY
             </div>
             <h1 className="font-display font-bold text-[2.2rem] md:text-[3.4rem] leading-[1.05] mb-5">
@@ -29,13 +29,13 @@ function HomePage() {
               <Link
                 to="/events/"
                 hash="upcoming"
-                className="inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded bg-gradient-to-r from-[#e91e25] to-[#7c2166] text-paper no-underline hover:from-[#7c2166] hover:to-[#e91e25] hover:-translate-y-0.5 transition"
+                className="inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded-sm bg-linear-to-r from-brick to-brickdk text-paper no-underline hover:from-brickdk hover:to-brick hover:-translate-y-0.5 transition"
               >
                 See Upcoming Events
               </Link>
               <Link
                 to="/about/"
-                className="inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded border border-paper/40 text-paper no-underline hover:border-paper hover:-translate-y-0.5 transition"
+                className="inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded-sm border border-paper/40 text-paper no-underline hover:border-paper hover:-translate-y-0.5 transition"
               >
                 Learn About Us →
               </Link>
@@ -65,7 +65,7 @@ function HomePage() {
               <div>[ "Nvidia", "NASA", "Google" ]</div>
               <div>
                 <span className="text-brick">$</span>{" "}
-                <span className="inline-block w-2 h-4 bg-gradient-to-r from-[#e91e25] to-[#7c2166] align-middle animate-caret"></span>
+                <span className="inline-block w-2 h-4 bg-linear-to-r from-brick to-brickdk align-middle animate-caret"></span>
               </div>
             </div>
           </div>
@@ -113,12 +113,12 @@ function HomePage() {
             </p>
             <Link
               to="/about/"
-              className="inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded border border-ink/30 text-ink no-underline hover:border-ink transition"
+              className="inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded-sm border border-ink/30 text-ink no-underline hover:border-ink transition"
             >
               Read our full story →
             </Link>
           </div>
-          <div className="bg-gradient-to-r from-[#e91e25] to-[#7c2166] rounded-lg p-8 min-h-[280px] flex items-center justify-center">
+          <div className="bg-linear-to-r from-brick to-brickdk rounded-lg p-8 min-h-[280px] flex items-center justify-center">
             <svg
               viewBox="0 0 320 260"
               fill="none"
@@ -172,7 +172,7 @@ function HomePage() {
           <Link
             to="/about/"
             hash="join"
-            className="inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded bg-gradient-to-r from-[#e91e25] to-[#7c2166] text-paper no-underline hover:from-[#7c2166] hover:to-[#e91e25] hover:-translate-y-0.5 transition"
+            className="inline-flex items-center gap-2 font-mono text-[.8rem] tracking-wide uppercase px-5 py-2.5 rounded-sm bg-linear-to-r from-brick to-brickdk text-paper no-underline hover:from-brickdk hover:to-brick hover:-translate-y-0.5 transition"
           >
             Apply Now
           </Link>

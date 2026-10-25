@@ -7,32 +7,32 @@
     "dev": "portless run --name aic-site vp dev",
     "build": "vp build",
     "preview": "portless run --name preview.aic-site vp preview --config vite.static.config.ts",
-    "check": "vp check",
+    "check": "vp check && tsrs --noEmit",
     "test": "vp test run"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.170.46",
     "@tanstack/react-start": "^1.169.4",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "@types/node": "^24.10.0",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
-    "autoprefixer": "^10.4.21",
     "portless": "0.15.11",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.19",
-    "typescript": "^6.0.0",
+    "tailwindcss": "^4.3.3",
+    "tsrs": "0.18.0-ts7.1.0-dev.20260929",
+    "typescript": "^7.0.2",
     "vite-plus": "1.4.0"
   },
   "overrides": {
     "vite": "npm:@voidzero-dev/vite-plus-core@1.4.0"
   },
   "engines": {
-    "node": "^24.11.0 || >=26.0.0"
+    "node": "^26.12.1"
   },
-  "packageManager": "npm@11.19.1"
+  "packageManager": "npm@12.2.1"
 }

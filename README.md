@@ -6,7 +6,7 @@ React, TanStack Router, TanStack Start static prerendering, Vite Plus, and Tailw
 
 ## Development
 
-Use Node.js 24.22.1 (see `.node-version`).
+Use Node.js 26.12.1 (see `.node-version`) and npm 12.2.1 (pinned in `package.json`).
 
 ```sh
 npm ci
@@ -19,7 +19,9 @@ npm run preview
 
 Development runs at **https://aic-site.localhost**. The static production preview runs at **https://preview.aic-site.localhost**. Both use [Portless](https://portless.sh/commands) with its default shared proxy and state. Portless is pinned to the same version as our other local projects. The normal package scripts register each app; no separate proxy, certificates, ports, or state directory are configured in this project.
 
-With the global Vite Plus CLI, use `vp install`, `vp run dev`, `vp check`, `vp test run`, `vp build`, and `vp run preview`. Use `vp run dev` and `vp run preview` to run the package scripts through Portless; bare `vp dev` and `vp preview` invoke the built-in tools directly. To bypass Portless temporarily, use `PORTLESS=0 npm run dev`.
+With the global Vite Plus CLI, use `vp install`, `vp run dev`, `vp run check`, `vp test run`, `vp build`, and `vp run preview`. Use `vp run dev` and `vp run preview` to run the package scripts through Portless; bare `vp dev` and `vp preview` invoke the built-in tools directly. To bypass Portless temporarily, use `PORTLESS=0 npm run dev`.
+
+Type checking runs through the experimental Rust-based `tsrs` compiler as part of `npm run check`. Vite Plus handles formatting and linting, including its existing type-aware lint rules. The official TypeScript package remains available for tooling compatibility and compiler comparisons. Tailwind CSS 4 uses its Vite plugin and CSS theme tokens in `src/styles.css`.
 
 ## Rendering and routing
 
@@ -46,7 +48,7 @@ For Cloudflare Pages, use:
 - Install: `npm ci` (or the platform's automatic npm lockfile install)
 - Build command: `npm run build`
 - Build output directory: `dist/client`
-- Node.js: `24.22.1`
+- Node.js: `26.12.1`
 
 Cloudflare serves `/about` and `/events` from their generated nested `index.html` files. The top-level `404.html` disables SPA fallback and gives unknown paths a real 404 response. See [Cloudflare's serving behavior](https://developers.cloudflare.com/pages/configuration/serving-pages/).
 
